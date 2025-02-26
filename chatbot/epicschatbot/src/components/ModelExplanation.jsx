@@ -13,7 +13,7 @@ const ModelExplanation = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-6xl font-extrabold text-cyan-800 mb-4"
+            className="text-6xl font-extrabold text-[#050C9C] mb-4"
           >
             How Our Purification Model Works
           </motion.h1>

@@ -2,12 +2,14 @@ import AboutUs from "./components/AboutUs"
 import Chatbot from "./components/Chatbot"
 import Footer from "./components/Footer"
 import FunFacts from "./components/FunFact"
+import Hero from "./components/Hero"
 import ModelExplanation from "./components/ModelExplanation"
 const App = () => {
   return (
     <>
-    {/* <ModelExplanation/> */}
-    {/* <FunFacts/> */}
+    <Hero/>
+    <ModelExplanation/>
+    <FunFacts/>
     {/* <AboutUs/> */}
     <Chatbot />
     {/* <Footer/> */}

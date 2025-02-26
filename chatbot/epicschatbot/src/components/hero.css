@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+
+body {
+    overflow: auto;
+    background: #050C9C;
+}
+
+.hero-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ensuring text is above everything */
+.head-text {
+    font-family: "Jua", serif;
+  font-weight: 400;
+  font-style: normal;
+    color: #A7E6FF;
+    position: absolute;
+    font-size: 3em;
+    text-align: center;
+    z-index: 10; /* Always on top */
+    opacity: 0;
+    animation: appear 2s 2.5s forwards; /* Animates once */
+}
+
+@keyframes appear {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.drop-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.drop {
+    position: absolute;
+    top: -25%;
+    width: 100%;
+    height: 100%;
+    border-radius: 100% 5% 100% 100%;
+    transform: rotate(-45deg);
+    background: #3ABEF9;
+    animation: drip 5s forwards infinite; /* Repeats every 5 sec */
+}
+
+.drop-container:before,
+.drop-container:after {
+    content: '';
+    position: absolute;
+    top: 55%;
+    right: 50%;
+    transform: translate(50%) rotateX(75deg);
+    border-radius: 100%;
+    opacity: 0;
+    width: 75%;
+    height: 75%;
+    border: 5px solid skyblue;
+    animation: dripple 2s ease-out 5s infinite; /* Repeats every 5 sec */
+}
+
+.drop-container:after {
+    animation-delay: 1.7s;
+}
+
+@keyframes drip {
+    45% {
+        top: 0;
+        border-radius: 100% 5% 100% 100%;
+        transform: rotate(-45deg);
+    }
+    100% {
+        top: 0;
+        transform: rotate(0deg);
+        border-radius: 100%;
+    }
+}
+
+@keyframes dripple {
+    0% { width: 150px; height: 150px; opacity: 0; }
+    25% { opacity: 1; }
+    100% {
+        width: 500px;
+        height: 500px;
+        top: -20%;
+        opacity: 0;
+    }
+}
