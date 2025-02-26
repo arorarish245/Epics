@@ -1,5 +1,6 @@
 import AboutUs from "./components/AboutUs"
 import Chatbot from "./components/Chatbot"
+import Contact from "./components/Contact"
 import Footer from "./components/Footer"
 import FunFacts from "./components/FunFact"
 import Hero from "./components/Hero"
@@ -11,6 +12,7 @@ const App = () => {
     <ModelExplanation/>
     <FunFacts/>
     {/* <AboutUs/> */}
+    {/* <Contact/> */}
     <Chatbot />
     {/* <Footer/> */}
     </>

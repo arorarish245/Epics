@@ -1,1 +1,28 @@
 @import "tailwindcss";
+/* src/index.css */
+.rainy-background {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .rainy-background .raindrop {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    bottom: 100%;
+    animation: fall linear infinite;
+    opacity: 0.8;
+    z-index: 10;
+    border-radius: 50%;
+  }
+  
+  @keyframes fall {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(110vh);
+    }
+  }
+  
