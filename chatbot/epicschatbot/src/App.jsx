@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 
 const App = () => {
   return (
+<<<<<<< HEAD
     <Router>
       <Routes>
         <Route path="/" element={<Hero />} />
@@ -22,5 +23,15 @@ const App = () => {
     </Router>
   );
 };
+=======
+    <>
+    {/* <ModelExplanation/> */}
+    {/* <FunFacts/> */}
+    {/* <AboutUs/> */}
+    <Contact/>
+    <Chatbot />
+    {/* <Footer/> */}
+    </>
+>>>>>>> 9f05e0a (Your commit message)
 
 export default App;
