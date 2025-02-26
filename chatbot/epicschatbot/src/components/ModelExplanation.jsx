@@ -4,7 +4,7 @@ import ReactPlayer from "react-player";
 
 const ModelExplanation = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-100 text-gray-800 py-10">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-[#A7E6FF] text-gray-800 py-10">
 
       {/* Overview Section */}
       <section className="flex flex-col md:flex-row items-center justify-between mb-20 px-4 w-11/12 md:w-10/12 mx-auto pt-22">
@@ -53,7 +53,7 @@ const ModelExplanation = () => {
 
       {/* How It Works Section */}
       <section className="text-center mb-20">
-        <h2 className="text-5xl font-bold text-cyan-700 mb-8">How It Works</h2>
+        <h2 className="text-5xl font-bold text-[#050C9C] mb-8">How It Works</h2>
         <p className="text-lg text-gray-700 w-11/12 md:w-8/12 mx-auto mb-6">
           Our model utilizes a multi-stage purification process to eliminate impurities, harmful bacteria, and contaminants. 
           It ensures the water retains essential minerals while achieving the highest purity levels.
@@ -67,7 +67,7 @@ const ModelExplanation = () => {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition"
             >
-              <h3 className="text-2xl font-semibold text-cyan-800 mt-2">{step}</h3>
+              <h3 className="text-2xl font-semibold text-[#3572EF] mt-2">{step}</h3>
               <p className="text-gray-600">
                 Detailed explanation about the {step.toLowerCase()} stage.
               </p>
@@ -78,7 +78,7 @@ const ModelExplanation = () => {
 
       {/* Video Demonstration */}
       <section className="text-center mb-20">
-        <h2 className="text-5xl font-bold text-cyan-700 mb-8">Model Demonstration</h2>
+        <h2 className="text-5xl font-bold text-[#050C9C] mb-8">Model Demonstration</h2>
         <p className="text-lg text-gray-700 w-11/12 md:w-8/12 mx-auto mb-6">
           Watch how our model effectively purifies water through each stage, delivering safe and clean drinking water.
         </p>
@@ -93,7 +93,7 @@ const ModelExplanation = () => {
 
       {/* Unique Features */}
       <section className="text-center mb-20">
-        <h2 className="text-5xl font-bold text-cyan-700 mb-8">Unique Features</h2>
+        <h2 className="text-5xl font-bold text-[#050C9C] mb-8">Unique Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-11/12 md:w-10/12 mx-auto">
           {[
             { title: "Smart Monitoring", desc: "Real-time monitoring for water quality and filter life." },
@@ -107,7 +107,7 @@ const ModelExplanation = () => {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition"
             >
-              <h3 className="text-2xl font-semibold text-cyan-800 mt-2">{feature.title}</h3>
+              <h3 className="text-2xl font-semibold text-[#3572EF] mt-2">{feature.title}</h3>
               <p className="text-gray-600">{feature.desc}</p>
             </motion.div>
           ))}
