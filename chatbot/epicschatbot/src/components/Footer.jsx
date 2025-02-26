@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-cyan-700 to-teal-700 text-white py-8">
+    <footer className="bg-gradient-to-r from-[#13203F] to-[#050C9C]] text-white py-8">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Logo and Description */}
