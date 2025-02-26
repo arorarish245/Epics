@@ -11,6 +11,7 @@ import Home from "./components/Home";
 
 const App = () => {
   return (
+<<<<<<< HEAD
     <Router>
     <Navbar/>
       <Routes>
@@ -25,5 +26,15 @@ const App = () => {
     </Router>
   );
 };
+=======
+    <>
+    {/* <ModelExplanation/> */}
+    {/* <FunFacts/> */}
+    {/* <AboutUs/> */}
+    <Contact/>
+    <Chatbot />
+    {/* <Footer/> */}
+    </>
+>>>>>>> 9f05e0a (Your commit message)
 
 export default App;

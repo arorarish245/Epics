@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-
+import fish from '../assets/fish.png';
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -24,7 +24,7 @@ const Contact = () => {
 
       {/* Fish Animation in Background */}
       <motion.img
-        src="https://www.geertjanhendriks.nl/codepen/form/fish.png"
+        src={fish}
         alt="Fish"
         className="absolute"
         initial={{ x: "-20vw" }}
@@ -33,7 +33,7 @@ const Contact = () => {
         style={{ width: "150px", height: "auto", top: "100px", zIndex: 0, opacity: 0.6 }}
       />
       <motion.img
-        src="https://www.geertjanhendriks.nl/codepen/form/fish.png"
+        src={fish}
         alt="Fish"
         className="absolute"
         initial={{ x: "-30vw" }}
@@ -42,7 +42,7 @@ const Contact = () => {
         style={{ width: "120px", height: "auto", top: "250px", zIndex: 0, opacity: 0.5 }}
       />
       <motion.img
-        src="https://www.geertjanhendriks.nl/codepen/form/fish.png"
+        src={fish}
         alt="Fish"
         className="absolute"
         initial={{ x: "-35vw" }}
@@ -123,7 +123,7 @@ const Contact = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             type="submit" 
-            className="bg-orange-400 text-white py-3 px-6 rounded-full shadow-md hover:bg-orange-600 transition"
+            className="bg-orange-400 text-white py-3 px-6 rounded-full shadow-md hover:bg-orange-500 transition"
           >
             Send Your Message!
           </motion.button>
