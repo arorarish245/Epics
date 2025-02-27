@@ -20,10 +20,8 @@ const Chatbot = () => {
       const response = await axios.post("http://localhost:3000/chatbot", {
         message: input,
       });
-      setMessages((prev) => [
-        ...prev,
-        { sender: "bot", text: response.data.response },
-      ]);
+      const botMessage = { sender: "bot", text: response.data.response };
+      setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
       console.error("Error sending message", error);
     } finally {
@@ -36,6 +34,14 @@ const Chatbot = () => {
       chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
     }
   }, [messages, isTyping]);
+
+  const readOutLoud = (text) => {
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = "en-US";
+    speech.rate = 1;
+    speech.pitch = 1;
+    window.speechSynthesis.speak(speech);
+  };
 
   return (
     <div className="fixed bottom-5 right-5 z-50">
@@ -58,7 +64,7 @@ const Chatbot = () => {
             <h3 className="text-lg font-bold text-gray-800">Chat with Us!</h3>
             <button className="text-gray-800 text-xl" onClick={() => setChatOpen(false)}>✖</button>
           </div>
-          <div className="p-4 h-[380px] overflow-y-auto space-y-2 bg-blue-50" ref={chatBodyRef}>
+          <div className="p-4 h-[340px] overflow-y-auto space-y-2 bg-blue-50" ref={chatBodyRef}>
             {messages.length === 0 ? (
               <div className="text-center text-blue-500">
                 <p>Start a conversation!</p>
@@ -103,6 +109,17 @@ const Chatbot = () => {
             >
               ➤
             </motion.button>
+          </div>
+          <div className="p-4 flex justify-center border-t border-blue-300">
+            {messages.length > 0 && messages[messages.length - 1].sender === "bot" && (
+              <motion.button
+                className="p-3 bg-blue-400 text-white rounded-lg hover:scale-105 transition"
+                onClick={() => readOutLoud(messages[messages.length - 1].text)}
+                whileTap={{ scale: 0.9 }}
+              >
+                🔊 Read Out
+              </motion.button>
+            )}
           </div>
         </motion.div>
       )}

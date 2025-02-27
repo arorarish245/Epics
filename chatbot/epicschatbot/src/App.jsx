@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Hero from "./components/Hero";
 import ModelExplanation from "./components/ModelExplanation";
 import FunFacts from "./components/FunFact";
 import AboutUs from "./components/AboutUs";

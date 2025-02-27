@@ -1,10 +1,9 @@
 // src/components/FunFacts.js
-import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   FaWater, FaIceCream, FaFireAlt, 
-  FaLeaf, FaTint, FaGlobe, 
-  FaFaucet, FaSnowflake 
+ FaTint, FaGlobe, 
+ FaSnowflake 
 } from 'react-icons/fa';
 
 const FunFacts = () => {

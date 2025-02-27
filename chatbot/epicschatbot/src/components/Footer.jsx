@@ -1,5 +1,3 @@
-// src/components/Footer.js
-import React from 'react';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
@@ -7,13 +5,10 @@ const Footer = () => {
     <footer className="bg-gradient-to-r from-[#13203F] to-[#050C9C]] text-white py-8">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          {/* Logo and Description */}
           <div className="mb-6 md:mb-0">
             <h1 className="text-3xl font-bold">Pure Drops</h1>
             <p className="text-gray-300 mt-2">Innovating water purification solutions for a healthier, cleaner, and more sustainable future.</p>
           </div>
-
-          {/* Navigation Links */}
           <div className="flex flex-col md:flex-row items-center gap-6">
             <a href="/" className="text-gray-200 hover:text-white transition">
               Home
@@ -33,7 +28,6 @@ const Footer = () => {
         <hr className="my-6 border-gray-600" />
 
         <div className="flex flex-col md:flex-row justify-between items-center">
-          {/* Social Media Links */}
           <div className="flex gap-4">
             <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition">
               <FaGithub className="text-2xl" />
@@ -45,8 +39,6 @@ const Footer = () => {
               <FaTwitter className="text-2xl" />
             </a>
           </div>
-
-          {/* Copyright */}
           <div className="text-gray-400 mt-4 md:mt-0">
             © {new Date().getFullYear()} Pure Drops. All Rights Reserved.
           </div>
