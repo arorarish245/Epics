@@ -4,7 +4,7 @@
     "singular": true,
     "customUi": true,
     "headerDisplay": "Homebridge Plugin for PureDrops (Water Purifier)",
-    "footerDisplay": "Created only by @rishav-bhardwaz",
+    "footerDisplay": "Created only by @rishav-bhardwaz and @ayush-mankar01",
     "schema": {
         "type": "object",
         "properties": {
