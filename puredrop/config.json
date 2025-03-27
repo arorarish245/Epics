@@ -1,0 +1,27 @@
+{
+    "bridge": {
+      "name": "Puredrops",
+      "username": "16:71:27:1a:60:b8", 
+      "port": 51826,
+      "pin": "864-46-299"
+    },
+  
+    "description": "This is an example configuration for the Tami4 homebridge plugin",
+    "platforms": [
+      {
+        "refreshToken": "test-1234-5678-abcdef-9876",
+        "lighting": true,
+        "pushAndDrink": false,
+        "nightMode": false,
+        "energySaveMode": false,
+        "smartHeatingMode": false,
+        "buttonsSound": false,
+        "statePollingInterval": 300,
+        "debug": true,
+        "platform": "PureDrops"
+      }
+    ],
+  
+    "accessories": [
+    ]
+  }
