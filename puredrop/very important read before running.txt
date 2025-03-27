@@ -1,0 +1,1 @@
+Don't Start the application without asking it will ruin the random access token and Application part will not work after that.
