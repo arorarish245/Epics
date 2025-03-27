@@ -6,7 +6,7 @@
       "pin": "864-46-299"
     },
   
-    "description": "This is an example configuration for the Tami4 homebridge plugin",
+    "description": "This is an example configuration for the Puredrop Filter homebridge plugin",
     "platforms": [
       {
         "refreshToken": "test-1234-5678-abcdef-9876",
