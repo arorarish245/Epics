@@ -5,3 +5,8 @@ const path = require('path')
 const storage = require('node-persist')
 
 
+module.exports = (api) => {
+	api.registerPlatform(PLUGIN_NAME, PLATFORM_NAME, puredropsPlatform)
+}
+
+// file is not completed need time to finish the code
