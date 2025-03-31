@@ -53,7 +53,7 @@
       pluginConfig = await homebridge.getPluginConfig();
   
       if (!pluginConfig.length || !pluginConfig[0].refreshToken) {
-        pluginConfig.push({ platform: 'Tami4' });
+        pluginConfig.push({ platform: 'Puredrop' });
         await homebridge.updatePluginConfig(pluginConfig);
         document.getElementById('setupRequired').style.display = 'block';
       } else {

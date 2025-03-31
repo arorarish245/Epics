@@ -1,9 +1,9 @@
-const Tami4Device = require('../kit/device')
+const PuredropDevice = require('../kit/device')
 
 module.exports = (platform) => {
 	return () => {
 		platform.devices.forEach(device => {
-			new Tami4Device(device, platform)
+			new PuredropDevice(device, platform)
 		})
 
 		const accessoriesToRemove = []
