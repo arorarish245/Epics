@@ -1,163 +1,127 @@
-<style>
-    .hidden {
-      display: none;
-    }
-  </style>
-  
-  <div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puredrops Plugin Setup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .hidden { display: none; }
+        .container { max-width: 500px; margin-top: 50px; }
+        .card { padding: 20px; border-radius: 10px; }
+        .btn { width: 100%; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="setupComplete" class="card text-center bg-light hidden">
+            <h5 class="text-success"><i class="fa fa-check-circle"></i> Homebridge is authorized to use Puredrops Filter</h5>
+            <button id="startOver" class="btn btn-danger">Generate New Token</button>
+        </div>
 
-    <div id="setupComplete" style="display:none;">
-      <h5><i class="fa fa-check green-text"></i> Homebridge is authorized to use Puredrops Filter</h5>
-      <a id="startOver" class="btn btn-blue">Generate New Token</a>
-    </div>
-  
-    <!-- shown when the plugin is not configured -->
-    <div id="setupRequired" style="display:none;">
-      <h3>Welcome to Puredrops Plugin</h3>
-      <h5>To get this plugin to work, You'll need authorize Homebridge using a code sent to your phone</h5>
-      <hr>
-      <div id="step1">
-        <div class="form-group">
-          <label for="phoneNumberInput">Phone Number</label>
-          <input type="text" class="form-control" id="phoneNumberInput" aria-describedby="phoneNumberHelp" required>
-          <small id="phoneNumberHelp" class="form-text text-muted">Please insert the phone number registered to Puredrops (user.config id).</small>
-        </div>
-        <div class="text-center">
-          <a id="skip" class="btn btn-elegant">Skip</a>
-          <button id="step1Submit" type="submit" class="btn btn-primary">Next</button>
-        </div>
-      </div>
-  
-      <div id="step2" style="display:none;">
-        <div class="form-group">
-          <label for="otpInput">OTP Code</label>
-          <input type="text" class="form-control" id="otpInput" aria-describedby="otpHelp">
-          <small id="otpHelp" class="form-text text-muted">Please enter the OTP code received at your device.</small>
-        </div>
-        <div class="text-center">
-          <a id="skip2" class="btn btn-elegant">Skip</a>
-          <button id="step2Submit" type="submit" class="btn btn-primary">Next</button>
-        </div>
-      </div>
-    </div>
-  
-  
-  </div>
-  <script type="text/javascript"
-    src="https://www.google.com/recaptcha/api.js?render=6Lf-jYgUAAAAAEQiRRXezC9dfIQoxofIhqBnGisq"></script>
-  <script>
-    let pluginConfig
-  
-    (async () => {
-      // get the initial config - this is an array potentially containing multiple config blocks
-      pluginConfig = await homebridge.getPluginConfig();
-  
-      if (!pluginConfig.length || !pluginConfig[0].refreshToken) {
-        pluginConfig.push({ platform: 'Puredrop' });
-        await homebridge.updatePluginConfig(pluginConfig);
-        document.getElementById('setupRequired').style.display = 'block';
-      } else {
-        document.getElementById('setupComplete').style.display = 'block';
-        homebridge.showSchemaForm();
-      }
-  
-      window.homebridge.addEventListener('configChanged', async (event) => {
-        console.log('Updated config:', event.data);
-        await homebridge.updatePluginConfig(event.data);
-      });
-    })();
+        <div id="setupRequired" class="card hidden">
+            <h3 class="text-center">Welcome to Puredrops Plugin</h3>
+            <p class="text-muted text-center">Authorize Homebridge using a code sent to your phone.</p>
+            <hr>
 
-    document.getElementById('skip').addEventListener('click', async () => {
-      document.getElementById('step2').style.display = 'none';
-      document.getElementById('setupRequired').style.display = 'none';
-      document.getElementById('setupComplete').style.display = 'block';
-      homebridge.showSchemaForm();
-    });
-    document.getElementById('skip2').addEventListener('click', async () => {
-      document.getElementById('step2').style.display = 'none';
-      document.getElementById('setupRequired').style.display = 'none';
-      document.getElementById('setupComplete').style.display = 'block';
-      homebridge.showSchemaForm();
-    });
-    document.getElementById('startOver').addEventListener('click', async () => {
-      document.getElementById('setupRequired').style.display = 'block';
-      document.getElementById('step2').style.display = 'none';
-      document.getElementById('setupComplete').style.display = 'none';
-    });
-    document.getElementById('step1Submit').addEventListener('click', async () => {
-      const phoneValue = document.getElementById('phoneNumberInput').value;
-  
-      if (!phoneValue) {
-        homebridge.toast.error('Please enter a valid phone number.', 'Error');
-        return;
-      }
-  
-      document.getElementById('step1Submit').setAttribute('disabled', 'disabled');
-  
-      try {
-        homebridge.showSpinner()
-        grecaptcha.ready(() => {
-          grecaptcha
-            .execute('6Lf-jYgUAAAAAEQiRRXezC9dfIQoxofIhqBnGisq', {
-              action: 'login'
-            })
-            .then(async (token) => {
-              await homebridge.request('/request-otp', { phone: phoneValue, token });
-              homebridge.hideSpinner()
-              document.getElementById('step1').style.display = 'none';
-              document.getElementById('step2').style.display = 'block';
-              document.getElementById('step1Submit').removeAttribute('disabled');
+            <div id="step1">
+                <div class="form-group">
+                    <label for="phoneNumberInput">Phone Number</label>
+                    <input type="text" class="form-control" id="phoneNumberInput" placeholder="Enter registered phone number" required>
+                    <small class="form-text text-muted">Use the phone number registered with Puredrops.</small>
+                </div>
+                <button id="step1Submit" class="btn btn-primary">Next</button>
+                <button id="skip" class="btn btn-secondary">Skip</button>
+            </div>
+
+            <div id="step2" class="hidden">
+                <div class="form-group">
+                    <label for="otpInput">OTP Code</label>
+                    <input type="text" class="form-control" id="otpInput" placeholder="Enter OTP">
+                    <small class="form-text text-muted">Check your device for the OTP code.</small>
+                </div>
+                <button id="step2Submit" class="btn btn-primary">Verify</button>
+                <button id="skip2" class="btn btn-secondary">Skip</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lf-jYgUAAAAAEQiRRXezC9dfIQoxofIhqBnGisq"></script>
+    <script>
+        let pluginConfig;
+
+        (async () => {
+            pluginConfig = await homebridge.getPluginConfig();
+            if (!pluginConfig.length || !pluginConfig[0].refreshToken) {
+                pluginConfig.push({ platform: 'Puredrop' });
+                await homebridge.updatePluginConfig(pluginConfig);
+                document.getElementById('setupRequired').classList.remove('hidden');
+            } else {
+                document.getElementById('setupComplete').classList.remove('hidden');
+                homebridge.showSchemaForm();
+            }
+        })();
+
+        document.getElementById('skip').addEventListener('click', () => completeSetup());
+        document.getElementById('skip2').addEventListener('click', () => completeSetup());
+        document.getElementById('startOver').addEventListener('click', resetSetup);
+        document.getElementById('step1Submit').addEventListener('click', async () => processStep1());
+        document.getElementById('step2Submit').addEventListener('click', async () => processStep2());
+
+        function completeSetup() {
+            document.getElementById('setupRequired').classList.add('hidden');
+            document.getElementById('setupComplete').classList.remove('hidden');
+            homebridge.showSchemaForm();
+        }
+
+        function resetSetup() {
+            document.getElementById('setupRequired').classList.remove('hidden');
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('setupComplete').classList.add('hidden');
+        }
+
+        async function processStep1() {
+            const phoneValue = document.getElementById('phoneNumberInput').value;
+            if (!phoneValue) {
+                homebridge.toast.error('Please enter a valid phone number.', 'Error');
+                return;
+            }
+            document.getElementById('step1Submit').setAttribute('disabled', 'disabled');
+            homebridge.showSpinner();
+            grecaptcha.ready(() => {
+                grecaptcha.execute('6Lf-jYgUAAAAAEQiRRXezC9dfIQoxofIhqBnGisq', { action: 'login' })
+                    .then(async (token) => {
+                        await homebridge.request('/request-otp', { phone: phoneValue, token });
+                        homebridge.hideSpinner();
+                        document.getElementById('step1').classList.add('hidden');
+                        document.getElementById('step2').classList.remove('hidden');
+                        document.getElementById('step1Submit').removeAttribute('disabled');
+                    });
             });
-        });
-      } catch (e) {
-        homebridge.hideSpinner()
-        homebridge.toast.error(e.message, 'Error');
-        document.getElementById('step1Submit').removeAttribute('disabled');
-      }
-  
-    });
-    document.getElementById('step2Submit').addEventListener('click', async () => {
-      const phoneValue = document.getElementById('phoneNumberInput').value;
-      const otpValue = document.getElementById('otpInput').value;
-  
-      if (!otpValue) {
-        homebridge.toast.error('Please enter a valid OTP code.', 'Error');
-        return;
-      }
-  
-      document.getElementById('step2Submit').setAttribute('disabled', 'disabled');
-  
-      try {
-        homebridge.showSpinner()
-        grecaptcha.ready(() => {
-          grecaptcha
-            .execute('6Lf-jYgUAAAAAEQiRRXezC9dfIQoxofIhqBnGisq', {
-              action: 'login'
-            })
-            .then(async (token) => {
-              const response = await homebridge.request('/check-otp', { phone: phoneValue, code: otpValue, token });
-  
-              if (!response.refreshToken)
-                throw new Error('No Refresh Token', response)
-  
-              // update so we can use the refresh token token generation khud hora hai don't mess up the code for now
-              pluginConfig[0].refreshToken = response.refreshToken;
-              await homebridge.updatePluginConfig(pluginConfig);
-              homebridge.showSchemaForm();
-              document.getElementById('step2').style.display = 'none';
-              document.getElementById('setupRequired').style.display = 'none';
-              document.getElementById('setupComplete').style.display = 'block';
-              homebridge.hideSpinner()
-              document.getElementById('step2Submit').removeAttribute('disabled');
+        }
+
+        async function processStep2() {
+            const otpValue = document.getElementById('otpInput').value;
+            if (!otpValue) {
+                homebridge.toast.error('Please enter a valid OTP code.', 'Error');
+                return;
+            }
+            document.getElementById('step2Submit').setAttribute('disabled', 'disabled');
+            homebridge.showSpinner();
+            grecaptcha.ready(() => {
+                grecaptcha.execute('6Lf-jYgUAAAAAEQiRRXezC9dfIQoxofIhqBnGisq', { action: 'login' })
+                    .then(async (token) => {
+                        const response = await homebridge.request('/check-otp', { phone: document.getElementById('phoneNumberInput').value, code: otpValue, token });
+                        if (!response.refreshToken) throw new Error('No Refresh Token');
+                        pluginConfig[0].refreshToken = response.refreshToken;
+                        await homebridge.updatePluginConfig(pluginConfig);
+                        completeSetup();
+                        homebridge.hideSpinner();
+                        document.getElementById('step2Submit').removeAttribute('disabled');
+                    });
             });
-        });
-  
-      } catch (e) {
-        homebridge.hideSpinner()
-        homebridge.toast.error(e.error || e.message, 'Error');
-        document.getElementById('step2Submit').removeAttribute('disabled');
-      }
-  
-    });
-  
-  </script>
+        }
+    </script>
+</body>
+</html>
