@@ -1,1 +1,5 @@
 Don't Start the application without asking it will ruin the random access token and Application part will not work after that.
+
+sudo npm install -g --unsafe-perm homebridge homebridge-config-ui-x
+sudo hb-service install
+http://localhost:8581
