@@ -3,3 +3,9 @@ Don't Start the application without asking it will ruin the random access token 
 sudo npm install -g --unsafe-perm homebridge homebridge-config-ui-x
 sudo hb-service install
 http://localhost:8581
+
+
+Start the docker daemon before running the docker instance 
+docker compose up 
+homebridge userid - riszzav password - *askpersonally*
+
