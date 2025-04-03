@@ -6,7 +6,7 @@ class UiServer extends HomebridgePluginUiServer {
 	constructor() {
 		super();
 
-		this.endpointUrl = 'https://authentication-prod.strauss-group.com';
+		this.endpointUrl = 'https://authentication-prod.strauss-group.com'; //need new auth method
 		// this.imei depending on the aurdino we buy for project;
 
 		this.onRequest('/request-otp', this.requestOtp.bind(this));
