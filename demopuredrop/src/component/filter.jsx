@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import ControlButtons from "./Buttons"; 
 
 export default function WaterFilter() {
   const [action, setAction] = useState("");
@@ -49,12 +50,13 @@ export default function WaterFilter() {
       <p className="mt-1 text-lg">Temperature: {temperature}°C</p>
       <p className="mt-1 text-lg">Container Size: {containerSize}</p>
       <p className="mt-2 text-gray-600">{action}</p>
-      <div className="flex gap-3 mt-5">
-        <button onClick={handlePourWater} className="px-4 py-2 bg-blue-500 text-white rounded">Pour Water</button>
-        <button onClick={handleHeatWater} className="px-4 py-2 bg-red-500 text-white rounded">Heat Water</button>
-        <button onClick={handleScanContainer} className="px-4 py-2 bg-green-500 text-white rounded">Scan Container</button>
-        <button onClick={handleDispenseWater} className="px-4 py-2 bg-purple-500 text-white rounded">Dispense Water</button>
-      </div>
+
+      <ControlButtons
+        onPour={handlePourWater}
+        onHeat={handleHeatWater}
+        onScan={handleScanContainer}
+        onDispense={handleDispenseWater}
+      />
     </div>
   );
 }
