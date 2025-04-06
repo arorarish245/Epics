@@ -9,3 +9,4 @@ Start the docker daemon before running the docker instance
 docker compose up 
 homebridge userid - riszzav password - *askpersonally*
 
+*create pulgins as you want I have created them and used the hosted link to access the api endpoint*
